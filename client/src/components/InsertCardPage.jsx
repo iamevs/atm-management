@@ -34,10 +34,11 @@ const InsertCardPage = ({ handleAccountNumber }) => {
                 }}
                 className='p-10 flex flex-col items-center justify-center'
                 >
-                    <h2 className="text-4xl font-bold mb-8 text-white">Wecome to KCT Bankers</h2>
-                    <img src={insert} alt="insert" className="w-1/4 mb-8 mt-0 p-2 rounded" style={{
-                        backdropFilter: "blur(10px)",
-                    }} />
+                    <h2 className="text-4xl font-bold mb-12 text-white">Wecome to KCT Bankers</h2>
+                    <h2 className="text-2xl font-bold mb-4" 
+                    style={{
+                        color: "#D89216",
+                    }}>Enter Account Number</h2>    
                     <form onSubmit={handleSubmit} className="w-64 flex flex-col">
                         <input
                             type="number"
