@@ -8,7 +8,6 @@ const InsertCardPage = ({ handleAccountNumber }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Call the parent element's function to handle the account number
         handleAccountNumber(accountNumber);
     };
 
