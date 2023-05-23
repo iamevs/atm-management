@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import InsertCardPage from './components/InsertCardPage.jsx';
 import PinScreen from './components/PinScreen.jsx';
+import Options from './components/Options.jsx';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 const App = () => {
     const [accno, setAccno] = useState(0);
-    const [pin, setPin] = useState(0);
-    const [pass, setPass] = useState(0);
+    const [pin, setPin] = useState(''); // entered in UI
+    const [pass, setPass] = useState(''); // fetched from DB
+    const [validacc, setValidAcc] = useState(false);
+    const [validation, setValidation] = useState(false);
 
     useEffect(() => {
-        if (accno !== 0) {
+        if (accno) {
             fetch(`http://localhost:8001/selectuser/${accno}`)
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.length > 0) {
                         setPass(data[0].pin);
-                        console.log(data[0].pin);
+                        setValidAcc(true);
                     } else {
                         setPass('');
-                        alert("Account not found");
+                        setValidAcc(false);
                         setAccno(0);
+                        window.alert('Invalid account number. Please try again.');
+                        window.location.href = '/';
                     }
                 })
                 .catch((error) => {
@@ -27,47 +33,49 @@ const App = () => {
         }
     }, [accno]);
 
-
     const handleAccountNumber = (accountNumber) => {
         setAccno(accountNumber);
     };
-    const handlePinEntered = (pin) => {
-        setPin(pin);
+
+    const handlePinEntered = (enteredPin) => {
+        setPin(enteredPin);
+        if (enteredPin === pass) {
+            setValidation(true);
+            console.log(validation);
+        } else {
+            window.alert('Invalid PIN. Please try again.');
+        }
     };
 
-    const auth = () => {
-        if (pin === pass) {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    const handleWrongPin = () => {
-        alert("Wrong Pin");
-        setAccno(0);
-        setPin(0);
-    }
-
     return (
-        <div className="flex flex-col items-center justify-center h-screen" style={{ background: '#1a1a1a' }}>
-            {accno === 0 ? (
-                <InsertCardPage handleAccountNumber={handleAccountNumber} />
-            ) : (
-                pin === 0 ? (
-                    <PinScreen handlePinEntered={handlePinEntered} />
-                ) : (
-                    auth() ? (
-                        <div className="flex flex-col items-center justify-center h-screen">
-                            <h1 className="text-2xl font-bold mb-4 text-white">Welcome</h1>
-                        </div>
-                    ) : (
-                        handleWrongPin()
-                    )
-                )
-            )}
-
-        </div>
+        <Router>
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        validacc ? (
+                            <Navigate to="/pin" replace />
+                        ) : (
+                            <div>
+                                <InsertCardPage handleAccountNumber={handleAccountNumber} />
+                            </div>
+                        )
+                    }
+                />
+                <Route
+                    path="/pin"
+                    element={
+                        validation ? (
+                            <Navigate to="/options" replace />
+                        ) : (
+                            <PinScreen handlePinEntered={handlePinEntered} />)
+                    } />
+                <Route
+                    path="/options"
+                    element={<Options accno={accno} />}
+                />
+            </Routes>
+        </Router>
     );
 };
 

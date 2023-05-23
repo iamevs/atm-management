@@ -10,7 +10,8 @@ const PinScreen = ({ handlePinEntered }) => {
     };
 
     return (
-        <>
+        
+        <div className="flex flex-col items-center justify-center h-screen" style={{ background: '#1a1a1a' }}>
             <div className="flex flex-col items-center justify-center h-screen">
                 <Navbar style={{
                     position: "realative",
@@ -51,7 +52,7 @@ const PinScreen = ({ handlePinEntered }) => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

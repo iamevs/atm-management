@@ -11,7 +11,7 @@ function Navbar() {
         }}>
             <div className="flex items-center justify-between">
                 <div className="flex items-center justify-center">
-                    <h1 className="text-2xl font-bold">KCT Bankers</h1>
+                    <a className="text-2xl font-bold" href='/'>KCT Bankers</a>
                 </div>
                 <div className="flex items-center">
                     <a href="#" className="text-lg font-bold mr-4 p-2" style={{

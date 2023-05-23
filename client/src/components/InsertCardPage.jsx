@@ -12,7 +12,8 @@ const InsertCardPage = ({ handleAccountNumber }) => {
     };
 
     return (
-        <>
+        
+        <div className="flex flex-col items-center justify-center h-screen" style={{ background: '#1a1a1a' }}>
             <Navbar style={{
                 position: "realative",
                 top: "0",
@@ -60,7 +61,7 @@ const InsertCardPage = ({ handleAccountNumber }) => {
                     </form>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
