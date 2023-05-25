@@ -38,7 +38,7 @@ const PinScreen = ({ handlePinEntered }) => {
                             <input
                                 type="password"
                                 value={pin}
-                                className="border border-gray-300 rounded px-3 py-2 w-full mb-4 text-center"
+                                className="border border-gray-300 rounded px-3 py-2 w-full mb-4 text-center password"
                                 placeholder='Enter your PIN'
                                 onChange={(e) => setPin(e.target.value)}
                             />

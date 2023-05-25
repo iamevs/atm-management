@@ -44,6 +44,7 @@ app.post('/withdraw/:accno', (req, res) => {
   const amount = req.body.amount;
 
   connection.query('SELECT balance FROM card WHERE accno = ?', [accno], (error, results) => {
+    console.log("amount in server : ",amount);
     if (error) {
       console.error('Error executing query:', error);
       res.status(500).json({ error: 'An error occurred' });
@@ -56,7 +57,6 @@ app.post('/withdraw/:accno', (req, res) => {
               console.error('Error executing query:', error);
               res.status(500).json({ error: 'An error occurred' });
             } else {
-              // res.json({ message: 'Withdrawal successful' });
               console.log('Withdrawal successful');
             }
           });
@@ -69,4 +69,3 @@ app.post('/withdraw/:accno', (req, res) => {
     }
   });
 });
-
