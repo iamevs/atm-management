@@ -31,11 +31,12 @@ const Options = ({ accno }) => {
   };
 
   const handleBalance = () => {
-    alert("you will be redirected back in 3 sec");
+    alert("you will be redirected back in 2 sec");
     navigate("/balance");
   };
-
+  
   const handleViewTransaction = () => {
+    alert("you will be redirected back in 2 sec");
     navigate("/viewtransaction");
   };
 

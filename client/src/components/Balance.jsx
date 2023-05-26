@@ -26,7 +26,7 @@ function Balance({ accno }) {
 
   setTimeout(() => {
     navigate("/"); 
-  }, 3000);
+  }, 2000);
 
   return (
     <div
@@ -54,8 +54,8 @@ function Balance({ accno }) {
             padding: "20px",
           }}
         >
-          <h1 className="text-white"> Balance </h1>
-          <h1 className="text-white"> Avaliable balance : ₹{balance} </h1>
+          <h1 className="text-3xl text-white mb-3">View your balance </h1>  
+          <h1 className="text-2xl text-white mb-3" style={{ color: "#D89216" }}> Your balance : {balance}</h1>
         </div>
       </div>
     </div>
