@@ -39,8 +39,6 @@ function Deposit({ accno, handlebalance , Balance}) {
       .catch((error) => {
         console.error('Error fetching PIN:', error);
       });
-    alert("Deposit completed successfully")
-    navigate('/');
   };
 
 
