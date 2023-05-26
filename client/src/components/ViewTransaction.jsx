@@ -1,9 +1,23 @@
-import React from "react";
+import React , { useState, useEffect}from "react";
 import Navbar from "./Navbar";
 import bg from "../assets/bg.jpg";
 
 
 function ViewTransaction({ accno }) {
+
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:8001/transaction/${accno}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setTransactions(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching transactions:', error);
+      });
+  }, [accno]);
+
   return (
     <div
       className="flex flex-col items-center justify-center h-screen"
@@ -31,34 +45,26 @@ function ViewTransaction({ accno }) {
           }}
         >
             <h1 className="text-white text-2xl">View you last 10 transactions</h1>
-            <table className="table border-2 border-dashed border-gray-300 mt-4">
-                <th className="border-2 border-dashed p-2" style={{
-                    color: "#D89216"
-                }}>S.no</th>
-                <th className="border-2 border-dashed p-2" style={{
-                    color: "#D89216"
-                }}>Transaction Id</th>
-                <th className="border-2 border-dashed p-2" style={{
-                    color: "#D89216"
-                }}>Transaction Type</th>
-                <th className="border-2 border-dashed p-2" style={{
-                    color: "#D89216"
-                }}>Amount</th>
-                <th className="border-2 border-dashed p-2" style={{
-                    color: "#D89216"
-                }}>Date</th>
-                <th className="border-2 border-dashed p-2" style={{
-                    color: "#D89216"
-                }}>Time</th>
-                <tr>
-                    <td className="border-2 border-dashed text-white p-2 text-white">1</td>
-                    <td className="border-2 border-dashed text-white p-2 text-white">12121</td>
-                    <td className="border-2 border-dashed text-white p-2 text-white">Deposit</td>
-                    <td className="border-2 border-dashed text-white p-2 text-white">2000</td>
-                    <td className="border-2 border-dashed text-white p-2 text-white">12/12/23</td>
-                    <td className="border-2 border-dashed text-white p-2 text-white">12:45</td>
+            <table className="text-white">
+            <thead>
+              <tr>
+                <th>Transaction Type</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {transactions.map((transaction) => (
+                <tr key={transaction.transid}>
+                  <td>{transaction.transtype}</td>
+                  <td>{transaction.amt}</td>
+                  <td>{transaction.date}</td>
+                  <td>{transaction.time}</td>
                 </tr>
-            </table>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

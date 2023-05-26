@@ -239,7 +239,7 @@ app.post('/deposit/:accno', (req, res) => {
 app.get('/transaction/:accno', (req, res) => {
   const accno = req.params.accno;
 
-  connection.query('SELECT transtype, date, time FROM transaction, card WHERE accno = ? && card.cardno = transaction.cardno', [accno], (error, results) => {
+  connection.query('SELECT transtype, amt , date, time FROM transaction, card WHERE accno = ? && card.cardno = transaction.cardno order by date && time', [accno], (error, results) => {
     if (error) {
       console.error('Error executing query:', error);
       res.status(500).json({ error: 'An error occurred' });
