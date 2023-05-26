@@ -41,18 +41,21 @@ app.get('/selectuser/:accno', (req, res) => {
 
 app.post('/withdraw/:accno', (req, res) => {
   const accno = req.params.accno;
-  const amount = req.body.amount;
+  const amt = req.body.amt;
 
   connection.query('SELECT balance FROM card WHERE accno = ?', [accno], (error, results) => {
-    console.log("amount in server : ",amount);
+    console.log("amount in server : ", amt);
     if (error) {
       console.error('Error executing query:', error);
       res.status(500).json({ error: 'An error occurred' });
     } else {
       if (results.length > 0) {
         const balance = results[0].balance;
-        if (balance >= amount) {
-          connection.query('UPDATE card SET balance = balance - ? WHERE accno = ?', [amount, accno], (error, results) => {
+        console.log("balance in server : ", balance);
+        console.log("amount in server : ", amt);
+        if (balance >= amt) {
+          console.log("inside if")
+          connection.query('UPDATE card SET balance = balance - ? WHERE accno = ?', [amt, accno], (error, results) => {
             if (error) {
               console.error('Error executing query:', error);
               res.status(500).json({ error: 'An error occurred' });
@@ -62,6 +65,38 @@ app.post('/withdraw/:accno', (req, res) => {
           });
         } else {
           res.status(400).json({ error: 'Insufficient balance' });
+        }
+      } else {
+        res.status(404).json({ error: 'Account not found' });
+      }
+    }
+  });
+});
+
+
+app.post('/deposit/:accno', (req, res) => {
+  const accno = req.params.accno;
+  const amount = req.body.amount;
+
+  connection.query('SELECT balance FROM card WHERE accno = ?', [accno], (error, results) => {
+    console.log("amount in server : ", amount);
+    if (error) {
+      console.error('Error executing query:', error);
+      res.status(500).json({ error: 'An error occurred' });
+    } else {
+      if (results.length > 0) {
+        const balance = results[0].balance;
+        if (amount > 0) {
+          connection.query('UPDATE card SET balance = balance + ? WHERE accno = ?', [amount, accno], (error, results) => {
+            if (error) {
+              console.error('Error executing query:', error);
+              res.status(500).json({ error: 'An error occurred' });
+            } else {
+              console.log('Deposit successful');
+            }
+          });
+        } else {
+          res.status(400).json({ error: 'Enter the amount' });
         }
       } else {
         res.status(404).json({ error: 'Account not found' });

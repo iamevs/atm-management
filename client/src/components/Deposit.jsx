@@ -1,8 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import bg from "../assets/bg.jpg";
+import { useNavigate } from "react-router-dom";
+import Balance from "./Balance";
 
-function Deposit({ accno }) {
+function Deposit({ accno, handlebalance , Balance}) {
+
+  const [amount, setAmount] = useState(0);
+  const navigate = useNavigate();
+
+  const handleDeposit = (event) => {
+    if (amount <= 0) {
+      alert("Please enter a valid amount");
+      return;
+    }
+    if (amount > 100000) {
+      alert("You can't deposit more than 100000 at a time");
+      return;
+    }
+    handlebalance(Balance + amount)
+    event.preventDefault();
+    fetch(`http://localhost:8001/deposit/${accno}`, {
+      method: 'POST',
+      body: JSON.stringify({ amount }),
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.error) {
+          console.log('Deposit error:', data.error);
+        } else {
+          alert('Deposit completed successfully');
+          navigate('/');
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching PIN:', error);
+      });
+    alert("Deposit completed successfully")
+    navigate('/');
+  };
+
+
   return (
     <div
       className="flex flex-col items-center justify-center h-screen"
@@ -40,12 +81,18 @@ function Deposit({ accno }) {
           >
             Enter the amount
           </h2>
-          <input 
-          type="number"
-           placeholder="Enter the amount to be deposited" 
-           className="p-2 rounded-md mb-4"  />
+          <input
+            type="number"
+            placeholder="Enter the amount to be deposited"
+            className="p-2 rounded-md mb-4"
+            value={amount}
+            onChange={(event) => {
+              setAmount(event.target.value);
+            }}
+          />
           <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4s"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4s"
+            onClick={handleDeposit}
           >Submit</button>
         </div>
       </div>

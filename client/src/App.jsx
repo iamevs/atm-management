@@ -54,6 +54,9 @@ const App = () => {
         }
     };
 
+    const handlebalance = (bal) => {
+        setBalance(bal);
+    }
     return (
         <Router>
             <Routes>
@@ -83,13 +86,13 @@ const App = () => {
                 />
                 <Route
                     path="/withdraw"
-                    element={<Withdraw accno={accno} balance={balance}/>}
+                    element={<Withdraw accno={accno} balance={balance} />}
                 />
                 <Route
                     path="/deposit"
-                    element={<Deposit accno={accno} />}
+                    element={<Deposit accno={accno} handlebalance={handlebalance} balance={balance}/>}
                 />
-                <Route  
+                <Route
                     path="/balance"
                     element={<Balance accno={accno} />}
                 />
