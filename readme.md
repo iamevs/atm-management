@@ -96,7 +96,7 @@ Before running the application, make sure you have the following software instal
 5. Start the application:
 
    ```bash
-   npm start
+   yarn start
    ```
 
 6. Open your web browser and navigate to `http://localhost:3000` to access the ATM Management System.
