@@ -7,9 +7,10 @@ import Navbar from "./Navbar";
 export default function Balance({ accno }) {
   const [balance, setbalance] = useState(0);
   const navigate = useNavigate();
+  const link = "http://localhost:8001/api/selectuser"
 
   useEffect(() => {
-    fetch(`http://localhost:8001/selectuser/${accno}`)
+    fetch(`${link}/${accno}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.length > 0) {

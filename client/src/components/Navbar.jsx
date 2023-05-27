@@ -1,9 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
-
-    const navigate = useNavigate();
 
     const backtohome = (e) => {
         e.preventDefault();
@@ -27,11 +24,6 @@ export default function Navbar() {
             </a>
           </div>
           <div className="flex items-center">
-            {/* <a href="#" className="text-lg font-bold mr-4 p-2" style={{
-                        color: "#D89216",
-                        border: "2px solid #D89216",
-                        borderRadius: "25px",
-                    }}>Cancel</a> */}
             <button
               className="text-lg font-bold mr-4 p-2"
               style={{

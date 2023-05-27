@@ -7,6 +7,7 @@ export default function Deposit({ accno, handlebalance , Balance}) {
 
   const [amount, setAmount] = useState(0);
   const navigate = useNavigate();
+  const link = "http://localhost:8001/api/deposit"
 
   const handleDeposit = (event) => {
     if (amount <= 0) {
@@ -19,7 +20,7 @@ export default function Deposit({ accno, handlebalance , Balance}) {
     }
     handlebalance(Balance + amount)
     event.preventDefault();
-    fetch(`http://localhost:8001/deposit/${accno}`, {
+    fetch(`${link}/${accno}`, {
       method: 'POST',
       body: JSON.stringify({ amount }),
       headers: { 'Content-Type': 'application/json' }

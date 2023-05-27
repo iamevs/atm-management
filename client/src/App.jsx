@@ -16,10 +16,11 @@ const App = () => {
     const [validacc, setValidAcc] = useState(false);
     const [validation, setValidation] = useState(false);
     const [balance, setBalance] = useState(0);
+    const link = "http://localhost:8001/api/selectuser"
 
     useEffect(() => {
         if (accno) {
-            fetch(`http://localhost:8001/selectuser/${accno}`)
+            fetch(`${link}/${accno}`)
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.length > 0) {

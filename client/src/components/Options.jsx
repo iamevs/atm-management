@@ -6,9 +6,10 @@ import Navbar from "./Navbar";
 const Options = ({ accno }) => {
   const [nameCard, setNameCard] = useState("");
   const navigate = useNavigate();
+  const link = "http://localhost:8001/api/selectuserc";
 
   useEffect(() => {
-    fetch(`http://localhost:8001/selectuser/${accno}`)
+    fetch(`${link}/${accno}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.length > 0) {
@@ -34,7 +35,7 @@ const Options = ({ accno }) => {
     alert("you will be redirected back in 2 sec");
     navigate("/balance");
   };
-  
+
   const handleViewTransaction = () => {
     alert("you will be redirected back in 2 sec");
     navigate("/viewtransaction");
@@ -67,7 +68,9 @@ const Options = ({ accno }) => {
           }}
         >
           <h1 className="text-4xl text-white mb-3">Welcome, {nameCard}</h1>
-            <h2 className="text-2xl mb-5" style={{ color: "#D89216" }}>Select a transaction</h2>     
+          <h2 className="text-2xl mb-5" style={{ color: "#D89216" }}>
+            Select a transaction
+          </h2>
           <div className="grid grid-cols-2 gap-5">
             <button
               className="text-white font-bold py-2 px-4 rounded options"

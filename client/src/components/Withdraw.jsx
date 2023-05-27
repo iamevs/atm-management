@@ -8,9 +8,10 @@ export default function Withdraw({ accno }) {
   const navigate = useNavigate();
   const [count, setCount] = useState(0);
   const [balance, setBalance] = useState(0);
+  const link = "http://localhost:8001/api/selectuser"
 
   useEffect(() => {
-    fetch(`http://localhost:8001/selectuser/${accno}`)
+    fetch(`${link}/${accno}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.length > 0) {

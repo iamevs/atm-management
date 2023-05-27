@@ -6,9 +6,10 @@ import Navbar from "./Navbar";
 export default function ViewTransaction({ accno }) {
   const [transactions, setTransactions] = useState([]);
   const navigate = useNavigate();
+  const link = "http://localhost:8001/api/transaction"
 
   useEffect(() => {
-    fetch(`http://localhost:8001/transaction/${accno}`)
+    fetch(`${link}/${accno}`)
       .then((response) => response.json())
       .then((data) => {
         setTransactions(data);
