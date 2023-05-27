@@ -81,7 +81,7 @@ Before running the application, make sure you have the following software instal
     );  
     
     CREATE TABLE Transaction (
-        transid INT PRIMARY KEY,
+        transid INT PRIMARY KEY AUTO_INCREMENT,
         cardno INT,
         transtype VARCHAR(255),
         amt DECIMAL(10, 2),
