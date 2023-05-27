@@ -1,8 +1,11 @@
 {
   "name": "client",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "main.jsx",
+  "author": "Vijayasenthil E",
+  "license": "MIT",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",

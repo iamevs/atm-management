@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Navbar from './Navbar';
 import bg from '../assets/bg.jpg';
+import Navbar from './Navbar';
 
 const PinScreen = ({ handlePinEntered }) => {
     const [pin, setPin] = useState('');

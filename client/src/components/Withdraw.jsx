@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
 import bg from "../assets/bg.jpg";
+import Navbar from "./Navbar";
 
-function Withdraw({ accno }) {
+export default function Withdraw({ accno }) {
   const [amount, setAmount] = useState(0);
   const navigate = useNavigate();
   const [count, setCount] = useState(0);
@@ -25,73 +25,6 @@ function Withdraw({ accno }) {
       });
   }, [accno]);
 
-
-  // const handleWithdraw = (event) => {
-  //   event.preventDefault();
-  //   fetch(`http://localhost:8001/withdraw/${accno}`, {
-  //     method: 'POST',
-  //     body: JSON.stringify({ amount }),
-  //     headers: { 'Content-Type': 'application/json' }
-  //   })
-  //     .then((res) => {
-  //       console.log("request arived")
-  //       if (res.status === 400) {
-  //         throw new Error('Bad Request');
-  //       }
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       console.log('Response data:', data);
-  //       if (data.error) {
-  //         console.log('Withdrawal error:', data.error);
-  //       } else {
-  //         console.log('Withdrawal completed successfully');
-  //         navigate('/');
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching PIN:', error);
-  //     });
-  // };
-
-  // const handleWithdraw = (event) => {
-  //   if (amount <= 0) {
-  //     alert("Please enter a valid amount");
-  //     return;
-  //   }
-  //   if (amount > balance) {
-  //     alert("You don't have enough balance to withdraw this amount");
-  //     return;
-  //   }
-  //   if (amount > 100000) {
-  //     alert("You can't withdraw more than 100000 at a time");
-  //     return;
-  //   }
-  //   event.preventDefault();
-  //   fetch(`http://localhost:8001/withdraw/${accno}`, {
-  //     method: 'POST',
-  //     body: JSON.stringify({ amount }),
-  //     headers: { 'Content-Type': 'application/json' }
-  //   })
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       if (data.error) {
-  //         console.log('Withdrawal error:', data.error);
-  //       } else {
-  //         console.log('Withdrawal completed successfully');
-  //         alert('Withdrawal completed successfully');
-  //         window.location.replace('/');
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching PIN:', error);
-  //     });
-  //   // alert("Withdrawal completed successfully")
-  //   // navigate('/', { replace: true });
-  // };
-
   const handlewithdrawvalidate = (event) => {
     event.preventDefault();
 
@@ -107,6 +40,7 @@ function Withdraw({ accno }) {
 
     if (amt > bal) {
       alert("Insufficient balance. Please enter a smaller amount");
+      navigate('/');
       return;
     }
 
@@ -204,4 +138,3 @@ function Withdraw({ accno }) {
   );
 }
 
-export default Withdraw;

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import bg from '../assets/bg.jpg';
-import insert from '../assets/insert.png';
 import Navbar from './Navbar';
 
 const InsertCardPage = ({ handleAccountNumber }) => {

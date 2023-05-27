@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import bg from "../assets/bg.jpg";
 import Navbar from "./Navbar";
-import { useNavigate } from "react-router-dom";
 
 const Options = ({ accno }) => {
   const [nameCard, setNameCard] = useState("");

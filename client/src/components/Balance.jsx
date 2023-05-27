@@ -1,10 +1,10 @@
-import React, { useState , useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import bg from "../assets/bg.jpg";
 import Navbar from "./Navbar";
 
-function Balance({ accno }) {
+export default function Balance({ accno }) {
   const [balance, setbalance] = useState(0);
   const navigate = useNavigate();
 
@@ -61,5 +61,3 @@ function Balance({ accno }) {
     </div>
   );
 }
-
-export default Balance;

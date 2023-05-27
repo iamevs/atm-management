@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
-import bg from "../assets/bg.jpg";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import bg from "../assets/bg.jpg";
+import Navbar from "./Navbar";
 
-function ViewTransaction({ accno }) {
+export default function ViewTransaction({ accno }) {
   const [transactions, setTransactions] = useState([]);
   const navigate = useNavigate();
 
@@ -93,5 +93,4 @@ function ViewTransaction({ accno }) {
     </div>
   );
 }
-
-export default ViewTransaction;
+ 

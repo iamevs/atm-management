@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import InsertCardPage from './components/InsertCardPage.jsx';
-import PinScreen from './components/PinScreen.jsx';
-import Options from './components/Options.jsx';
-import Withdraw from './components/Withdraw.jsx';
-import Deposit from './components/Deposit.jsx';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Balance from './components/Balance.jsx';
+import Deposit from './components/Deposit.jsx';
+import InsertCardPage from './components/InsertCardPage.jsx';
+import Options from './components/Options.jsx';
+import PinScreen from './components/PinScreen.jsx';
 import ViewTransaction from './components/ViewTransaction.jsx';
+import Withdraw from './components/Withdraw.jsx';
 
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
 const App = () => {
     const [accno, setAccno] = useState(0);

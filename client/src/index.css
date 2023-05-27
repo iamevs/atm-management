@@ -1,15 +1,1 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-*{
-    user-select: none;
-}
-
-.options{
-    background-color: #D89216;
-}
-
-.options:hover{
-    background-color: #ed9d12;
-}
+@tailwind base;@tailwind components;@tailwind utilities;*{user-select: none;}.options{background-color: #D89216;}.options:hover{background-color: #ed9d12;}

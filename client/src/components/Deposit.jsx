@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
-import bg from "../assets/bg.jpg";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Balance from "./Balance";
+import bg from "../assets/bg.jpg";
+import Navbar from "./Navbar";
 
-function Deposit({ accno, handlebalance , Balance}) {
+export default function Deposit({ accno, handlebalance , Balance}) {
 
   const [amount, setAmount] = useState(0);
   const navigate = useNavigate();
@@ -98,4 +97,3 @@ function Deposit({ accno, handlebalance , Balance}) {
   );
 }
 
-export default Deposit;

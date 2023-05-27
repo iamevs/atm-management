@@ -1,0 +1,15 @@
+{
+  "name": "atm-management",
+  "version": "1.0.0",
+  "description": "an atm colne using react js, tailwindcss, nodejs, express and mysql.",
+  "main": "./client/",
+  "repository": "https://github.com/iamevs/atm-management.git",
+  "author": "iamevs <iamevs143@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "concurrently \"cd server && yarn dev\" \"cd client && yarn dev\""
+  },
+  "dependencies": {
+    "concurrently": "^7.4.4"
+  }
+}
