@@ -1,28 +1,22 @@
+import cors from "cors";
 import dotenv from "dotenv";
+import express from "express";
+import connection from "./Database.js";
+
+
 dotenv.config();
 
-import express from "express";
-
 const app = express();
-import cors from "cors";
 const port = 8001;
 
-import connection from "./Database.js";
-import bodyParser from "body-parser";
-
 app.use(cors());
-// app.use(bodyParser.json());
 app.use(express.json());
 
 app.listen(port, () => console.log(`App listening on port ${port}!`));
 
 // routes
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-app.get("/selectuser/:accno", (req, res) => {
+app.get("/api/selectuser/:accno", (req, res) => {
   const accno = req.params.accno;
 
   connection.query(
@@ -39,7 +33,7 @@ app.get("/selectuser/:accno", (req, res) => {
   );
 });
 
-app.post("/withdraw/:accno", (req, res) => {
+app.post("/api/withdraw/:accno", (req, res) => {
   const accno = req.params.accno;
   const amt = req.body.amt;
 
@@ -120,7 +114,7 @@ app.post("/withdraw/:accno", (req, res) => {
   );
 });
 
-app.post("/deposit/:accno", (req, res) => {
+app.post("api/deposit/:accno", (req, res) => {
   const accno = req.params.accno;
   const amount = req.body.amount;
 
@@ -201,7 +195,7 @@ app.post("/deposit/:accno", (req, res) => {
   );
 });
 
-app.get("/transaction/:accno", (req, res) => {
+app.get("api/transaction/:accno", (req, res) => {
   const accno = req.params.accno;
 
   connection.query(
