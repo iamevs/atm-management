@@ -31,29 +31,29 @@ Before running the server, make sure you have the following software installed:
 
 ## Installation
 
-    1. Clone the repository from GitHub:
+   ### 1. Clone the repository from GitHub:
  ```bash
  git clone https://github.com/iamevs/atm-management.git
  ```
 
-    2. Navigate to the server directory:
+   ### 2. Navigate to the server directory:
 
    ```bash
    cd atm-management/server
    ```
 
-    3. Install the dependencies:
+   ### 3. Install the dependencies:
 
    ```bash
    yarn
    ```
 
-    4. Configure the database connection:
+   ### 4. Configure the database connection:
 
    - Open the `.env` file.
    - Enter the `host`, `user`, `password`, and `database` fields with your MySQL connection details.
 
-    5. Start the server:
+   ### 5. Start the server:
    ```bash
    yarn dev
    ```
@@ -82,11 +82,11 @@ Before running the server, make sure you have the following software installed:
 
 Contributions are welcome! If you would like to contribute to this project, please follow these steps:
 
-    1. Fork the repository.
-    2. Create a new branch for your feature or bug fix.
-    3. Make the necessary changes and commit your code.
-    4. Push your changes to your forked repository.
-    5. Submit a pull request describing your changes.
+   1. Fork the repository.
+   2. Create a new branch for your feature or bug fix.
+   3. Make the necessary changes and commit your code.
+   4. Push your changes to your forked repository.
+   5. Submit a pull request describing your changes.
 
 ## License
 
@@ -95,4 +95,3 @@ This project is licensed under the [MIT License](LICENSE).
 ## Contact
 
 If you have any questions or suggestions regarding this project, feel free to contact the author at [iamevs](https://github.com/iamevs).
-```
