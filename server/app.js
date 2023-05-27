@@ -114,7 +114,7 @@ app.post("/api/withdraw/:accno", (req, res) => {
   );
 });
 
-app.post("api/deposit/:accno", (req, res) => {
+app.post("/api/deposit/:accno", (req, res) => {
   const accno = req.params.accno;
   const amount = req.body.amount;
 
@@ -195,7 +195,7 @@ app.post("api/deposit/:accno", (req, res) => {
   );
 });
 
-app.get("api/transaction/:accno", (req, res) => {
+app.get("/api/transaction/:accno", (req, res) => {
   const accno = req.params.accno;
 
   connection.query(

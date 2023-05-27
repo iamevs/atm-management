@@ -65,7 +65,7 @@ export default function Withdraw({ accno }) {
     event.preventDefault();
     const amt = Number(amount);
 
-    fetch(`http://localhost:8001/withdraw/${accno}`, {
+    fetch(`http://localhost:8001/api/withdraw/${accno}`, {
       method: 'POST',
       body: JSON.stringify({ amt }),
       headers: { 'Content-Type': 'application/json' }

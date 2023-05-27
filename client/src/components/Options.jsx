@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 const Options = ({ accno }) => {
   const [nameCard, setNameCard] = useState("");
   const navigate = useNavigate();
-  const link = "http://localhost:8001/api/selectuserc";
+  const link = "http://localhost:8001/api/selectuser";
 
   useEffect(() => {
     fetch(`${link}/${accno}`)
