@@ -199,7 +199,7 @@ app.get("/api/transaction/:accno", (req, res) => {
   const accno = req.params.accno;
 
   connection.query(
-    "SELECT transtype, amt , date, time FROM transaction, card WHERE accno = ? && card.cardno = transaction.cardno order by date && time",
+    "SELECT transtype, amt , date, time FROM transaction, card WHERE accno = ? && card.cardno = transaction.cardno ORDER BY date DESC, time DESC limit 10",
     [accno],
     (error, results) => {
       if (error) {
