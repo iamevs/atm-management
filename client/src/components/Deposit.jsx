@@ -18,6 +18,10 @@ export default function Deposit({ accno, handlebalance , Balance}) {
       alert("You can't deposit more than 100000 at a time");
       return;
     }
+    if (amount%10 != 0) {
+      alert("Enter a round figure value")
+      return;
+    }
     handlebalance(Balance + amount)
     event.preventDefault();
     fetch(`${link}/${accno}`, {

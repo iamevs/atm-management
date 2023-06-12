@@ -54,6 +54,10 @@ export default function Withdraw({ accno }) {
       alert("Please enter a valid amount (no decimals)");
       return;
     }
+    if (amt%10 !=0){
+      alert("Enter a round figure value");
+      return;
+    }
 
 
     handleWithdraw(event);
