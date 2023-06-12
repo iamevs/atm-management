@@ -37,7 +37,7 @@ const Options = ({ accno }) => {
   };
 
   const handleViewTransaction = () => {
-    alert("you will be redirected back in 2 sec");
+    alert("you will be redirected back in 5 sec");
     navigate("/viewtransaction");
   };
 

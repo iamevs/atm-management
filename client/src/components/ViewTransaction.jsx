@@ -21,7 +21,7 @@ export default function ViewTransaction({ accno }) {
 
   setTimeout(() => {
     navigate('/');
-  }, 2000);
+  }, 5000);
 
   return (
     <div
